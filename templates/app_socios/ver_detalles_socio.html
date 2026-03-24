@@ -1,0 +1,215 @@
+{% extends "../layout_irrigacion_ocoña.html" %}
+{% block titulo %}Socios{% endblock  %}
+{% block contenido %}
+<h2 class="no-margin">Informacion Socio</h2>
+<div class="contenedor_principal_informacion">
+    <div class="opciones_principal">        
+        <div class="botones_enlaces">
+            <a href="{% url 'socios'%}">                
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#02264d"
+            stroke-width="2.25"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            >
+            <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+            <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1" />
+            <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+            <path d="M17 10h2a2 2 0 0 1 2 2v1" />
+            <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+            <path d="M3 13v-1a2 2 0 0 1 2 -2h2" />
+            </svg>                
+            </a>                        
+            <a href="{% url 'editar_socio' pk=socio.id %}">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#01b21e"
+                stroke-width="2.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                >
+                <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+                <path d="M13.5 6.5l4 4" />
+                </svg>
+            </a>
+            <a href="{% url 'home_irrigacion_ocoña' %}">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#d21919"
+                stroke-width="2.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                >
+                <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+                <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                <path d="M10 12h4v4h-4z" />
+                </svg>
+            </a>
+        </div>
+    </div>   
+    <div>
+        <div class="data_label">
+            <div class="informacion_labels">
+                <label class="texto_negrita" for="">ID:</label>
+                <label for="">{{ socio.id }}</label>
+                <label class="texto_negrita" for="">Tipo Socio:</label>
+                <label for="">{{ socio.tipo_socio }}</label>
+                <label class="texto_negrita" for="">DNI:</label>
+                <label for="">{{ socio.dni|default:"No ingresado" }}</label>
+                <label class="texto_negrita" for="">Sexo:</label>
+                <label for="">{{ socio.sexo|default:"No Ingresado" }}</label>
+                <label class="texto_negrita" for="">Estado Civil:</label>
+                <label for="">{{ socio.estado_civil|default:"No Ingresado" }}</label> 
+            </div>        
+            <div class="informacion_labels">
+                <label class="texto_negrita" for="">Nombre Completo:</label>
+                <label for="">{{ socio.apellidos }}, {{ socio.nombres }}</label>
+                <label class="texto_negrita" for="">☎:</label>
+                <label for="">{{ socio.numero_contacto|default:"No Ingresado" }}</label>  
+            </div>                  
+            <div class="informacion_labels">
+                <label class="texto_negrita" for="">Domicilio:</label>
+                <label for="">{{ socio.domicilio|default:"No registra" }}</label>                
+            </div>            
+            <div class="informacion_labels">
+                <label class="texto_negrita" for="">Fecha Nacimiento:</label>
+                <label for="">{{ socio.fecha_nacimiento|default:"No Ingresado" }}</label>
+                <label class="texto_negrita" for="">Lugar Nacimiento:</label>
+                <label for="">{{ socio.lugar_nacimiento|default:"No Ingresado" }}</label>                  
+            </div>      
+            <div class="informacion_labels">
+                <label class="texto_negrita" for="">Distrito:</label>
+                <label for="">{{ socio.distrito|default:"No Ingresado" }}</label> 
+                <label class="texto_negrita" for="">Provincia:</label>
+                <label for="">{{ socio.provincia|default:"No Ingresado" }}</label>
+                <label class="texto_negrita" for="">Departamento:</label>
+                <label for="">{{ socio.departamento|default:"No Ingresado" }}</label>                 
+            </div>  
+            <div class="informacion_labels">
+                <label class="texto_negrita" for="">Nacionalidad:</label>
+                <label for="">{{ socio.nacionalidad|default:"No Ingresado" }}</label>                
+            </div>      
+            <div class="informacion_labels">
+                <label class="texto_negrita" for="">Profesion/Ocupacion:</label>
+                <label for="">{{ socio.profesion|default:"No Ingresado" }}</label>
+                <label class="texto_negrita" for="">Grado de Instruccion:</label>
+                <label for="">{{ socio.grado_instruccion|default:"No Ingresado" }}</label>                 
+            </div>   
+            <div class="informacion_labels">
+                <label class="texto_negrita" for="">Centro Trabajo:</label>
+                <label for="">{{ socio.centro_trabajo|default:"No Ingresado" }}</label>                
+            </div> 
+            <div class="informacion_labels">
+                <label class="texto_negrita" for="">Correo:</label>
+                <label for="">{{ socio.correo|default:"No Ingresado" }}</label>                
+            </div> 
+            <div class="informacion_labels">
+                <label class="texto_negrita" for="">Numero Contacto Adicional:</label>
+                <label for="">{{ socio.numero_contacto_adicional|default:"No Ingresado" }}</label>
+                <label class="texto_negrita" for="">Fecha Ingreso:</label>
+                <label for="">{{ socio.fecha_ingreso|default:"No Ingresado" }}</label>
+                <a class="botones_enlaces_add"
+                hx-get="{% url 'buscar_socio' %}"
+                hx-target="#fragmento_buscar_socio"
+                >Agregar Familiares</a>                 
+            </div>
+            <div id="fragmento_buscar_socio">
+            </div> 
+        </div>
+        <div class="data_cuadros">
+            <div class="tabla_resumen">
+                <h2 class="no-margin">Huertos Adquiridos:</h2>
+                <hr class="no-margin">
+                <table class="tabla_pequeña">
+                    <thead>
+                        <tr>
+                            <th>CodigoSocio</th>
+                            <th>Huerto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for huerto in huertos_socio %}
+                        <tr>
+                            <td>{{ huerto.codigo_socio_asociado }}</td>
+                            <td>{{ huerto.nombre }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="tabla_resumen">
+                <h2 class="no-margin">Parcelas Adquiridas:</h2>
+                <hr class="no-margin">
+                <table class="tabla_pequeña">
+                    <thead>
+                        <tr>
+                            <th>CodigoSocio</th>
+                            <th>Huerto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for parcela in parcelas_socio %}
+                        <tr>
+                            <td>{{ parcela.codigo_socio_asociado }}</td>
+                            <td>{{ parcela.nombre }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="tabla_resumen">
+                <h2 class="no-margin">Historial Codigos Socio:</h2>
+                <hr class="no-margin">
+                <table class="tabla_pequeña">
+                    <!--<thead>
+                        <tr>
+                            <th>CodigoSocio</th>
+                            <th>Huerto</th>
+                        </tr>
+                    </thead>-->
+                    <tbody>
+                        {% for codigo in codigos_asociados %}
+                        <tr>                            
+                            <td class="decoracion_texto">{{ codigo }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="tabla_resumen">
+                <h2 class="no-margin">Personas Asociadas:</h2>
+                <hr class="no-margin">
+                <table class="tabla_pequeña">
+                    <!--<thead>
+                        <tr>
+                            <th>CodigoSocio</th>
+                            <th>Huerto</th>
+                        </tr>
+                    </thead>-->
+                    <tbody>
+                        {% for personas in personas_asociadas %}
+                        <tr>                            
+                            <td class="decoracion_texto">{{ personas }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div> 
+</div>
+{% endblock  %}

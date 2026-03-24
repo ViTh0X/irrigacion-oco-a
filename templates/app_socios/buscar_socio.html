@@ -1,0 +1,191 @@
+{% extends "../layout_irrigacion_ocoña.html" %}
+{% block titulo %}Socios{% endblock  %}
+{% block contenido %}
+<h2 class="no-margin">Editando Socio</h2>
+<div class="contenedor_principal_informacion">
+    <form method="POST">
+        {% csrf_token %}    
+    <div class="opciones_principal">        
+        <div class="botones_enlaces">
+            <button class="boton_guardar" type="submit">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#02264d"
+                stroke-width="2.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                >
+                <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
+                <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                <path d="M14 4l0 4l-6 0l0 -4" />
+                </svg>
+            </button>
+            <a href="{% url 'home_irrigacion_ocoña' %}">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#d21919"
+                stroke-width="2.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                >
+                <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+                <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                <path d="M10 12h4v4h-4z" />
+                </svg>
+            </a>
+        </div>
+    </div>   
+    <div>
+        <div class="data_label">          
+            <div class="informacion_labels_select informacion_labels_input ancho_34rem">
+                <div class="editar_nombre_socios">
+                    <label class="texto_negrita" for="">Tipo Socio:</label>
+                    {{ form.tipo_socio }}
+                    <label class="texto_negrita" for="">DNI:</label>
+                    {{ form.dni }}                    
+                    <label class="texto_negrita" for="">Sexo:</label>
+                    {{ form.sexo }}
+                    <label class="texto_negrita" for="">Estado Civil:</label>
+                    {{ form.estado_civil }}
+                </div>                
+            </div>            
+            <div class="informacion_labels_input ancho_34rem"> 
+                <label class="texto_negrita" for="">Apellidos:</label>
+                {{ form.apellidos }}
+                <label class="texto_negrita" for="">Nombres:</label>
+                {{ form.nombres }}
+                <label class="texto_negrita" for="">☎:</label>
+                {{ form.numero_contacto }}
+            </div>            
+            <div class="informacion_labels_select informacion_labels_input ancho_60rem">
+                <label class="texto_negrita" for="">Domicilio:</label>
+                {{ form.domicilio }}    
+            </div>            
+            <div class="informacion_labels_input">
+                <label class="texto_negrita" for="">Fecha Nacimiento:</label>
+                {{ form.fecha_nacimiento }}
+                <label class="texto_negrita" for="">Lugar Nacimiento:</label>
+                {{ form.lugar_nacimiento }}                
+            </div>
+            <div class="informacion_labels_input">
+                <label class="texto_negrita" for="">Distrito:</label>
+                {{ form.distrito }}  
+                <label class="texto_negrita" for="">Provincia:</label>
+                {{ form.provincia }}
+                <label class="texto_negrita" for="">Departamento:</label>
+                {{ form.departamento }}                 
+            </div>
+            <div class="informacion_labels_input">
+                <label class="texto_negrita" for="">Profesion/Ocupacion:</label>
+                {{ form.profesion }}
+                <label class="texto_negrita" for="">Grado de Instruccion:</label>
+                {{ form.grado_instruccion }}                 
+            </div>
+            <div class="informacion_labels_input ancho_60rem">
+                <label class="texto_negrita" for="">Centro Trabajo:</label>
+                {{ form.centro_trabajo }}                
+            </div>
+            <div class="informacion_labels_input ancho_60rem">
+                <label class="texto_negrita" for="">Correo:</label>
+                {{ form.correo }}                
+            </div>
+            <div class="informacion_labels_input">
+                <label class="texto_negrita" for="">Numero Contacto Adicional:</label>
+                {{ form.numero_contacto_adicional }}
+                <label class="texto_negrita" for="">Fecha Ingreso:</label>
+                {{ form.fecha_ingreso }}                 
+            </div>           
+        </div>
+        <div class="data_cuadros">
+            <div class="tabla_resumen">
+                <h2 class="no-margin">Huertos Adquiridos:</h2>
+                <hr class="no-margin">
+                <table class="tabla_pequeña">
+                    <thead>
+                        <tr>
+                            <th>CodigoSocio</th>
+                            <th>Huerto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for huerto in huertos_socio %}
+                        <tr>
+                            <td>{{ huerto.codigo_socio_asociado }}</td>
+                            <td>{{ huerto.nombre }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="tabla_resumen">
+                <h2 class="no-margin">Parcelas Adquiridas:</h2>
+                <hr class="no-margin">
+                <table class="tabla_pequeña">
+                    <thead>
+                        <tr>
+                            <th>CodigoSocio</th>
+                            <th>Parcela</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for parcela in parcelas_socio %}
+                        <tr>
+                            <td>{{ parcela.codigo_socio_asociado }}</td>
+                            <td>{{ parcela.nombre }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="tabla_resumen">
+                <h2 class="no-margin">Historial Codigos Socio:</h2>
+                <hr class="no-margin">
+                <table class="tabla_pequeña">
+                    <!--<thead>
+                        <tr>
+                            <th>CodigoSocio</th>
+                            <th>Huerto</th>
+                        </tr>
+                    </thead>-->
+                    <tbody>
+                        {% for codigo in codigos_asociados %}
+                        <tr>                            
+                            <td class="decoracion_texto">{{ codigo }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="tabla_resumen">
+                <h2 class="no-margin">Personas Asociadas:</h2>
+                <hr class="no-margin">
+                <table class="tabla_pequeña">
+                    <!--<thead>
+                        <tr>
+                            <th>CodigoSocio</th>
+                            <th>Huerto</th>
+                        </tr>
+                    </thead>-->
+                    <tbody>
+                        {% for personas in personas_asociadas %}
+                        <tr>                            
+                            <td class="decoracion_texto">{{ personas }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div> 
+    </form>
+</div>
+{% endblock  %}

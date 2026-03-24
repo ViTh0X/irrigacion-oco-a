@@ -1,0 +1,73 @@
+{% extends "../layout_irrigacion_ocoña.html" %}
+{% block titulo %}Socios{% endblock  %}
+{% block contenido %}
+<h1 class="no-margin">Editando Huerto</h1>
+<div class="contenedor_principal_informacion">
+    <form method="POST">
+        {% csrf_token %}    
+    <div class="opciones_principal">        
+        <div class="botones_enlaces">
+            <button class="boton_guardar" type="submit">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#02264d"
+                stroke-width="2.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                >
+                <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
+                <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                <path d="M14 4l0 4l-6 0l0 -4" />
+                </svg>
+            </button>
+            <a href="{% url 'home_irrigacion_ocoña' %}">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#d21919"
+                stroke-width="2.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                >
+                <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+                <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                <path d="M10 12h4v4h-4z" />
+                </svg>
+            </a>
+        </div>
+    </div>   
+    <div>
+        <div class="data_label">
+            <div class="informacion_labels_input">
+                <label class="texto_negrita" for="">Nombre:</label>
+                {{ form.nombre }}
+            </div> 
+            <div class="informacion_labels">
+                <label class="texto_negrita" for="">Socio:</label>
+                <label for="">{{ huerto.socio_relacionado.apellidos }}, {{ huerto.socio_relacionado.nombres }}</label>
+            </div>            
+            <div class="informacion_labels">
+                <label class="texto_negrita" for="">Codigo Socio:</label>
+                <label for="">{{ huerto.codigo_socio_asociado }}</label>
+            </div>            
+            <div class="informacion_labels"> 
+                <label class="texto_negrita" for="">Personas Relacionadas:</label>
+                <ul>
+                    {% for persona in personas_relacionadas %}
+                    <label for="" class="display_flex">°{{ persona }}</label>
+                    {% empty %}
+                    <label for="">No tiene personas Relacionadas</label>
+                    {% endfor %}
+                </ul>                
+            </div>            
+        </div>            
+    </form>
+</div>
+{% endblock  %}

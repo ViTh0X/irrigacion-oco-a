@@ -1,0 +1,380 @@
+:root{
+    --colorPrincipal:#02264d;
+    --colorSecundario:#44C730;
+    --blanco: #fff;
+    --oscuro: #000;
+    --gris: #D8DAD9;
+    --grisOscuro: #878787;
+
+    
+    --fuentePrincipal:"Poppins", sans-serif;
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;    
+}
+
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+
+body{
+    font-family: var(--fuentePrincipal);        
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    justify-content: center; 
+}
+
+/*Globales*/
+
+/*Utilidades*/
+.no-margin{
+    margin: 0;
+}
+
+/*Menu Principal*/
+.contenedor_principal{
+    width: 99%;    
+    height: 99%;        
+}
+
+.opciones_menu a{
+    display: flex;
+    margin-bottom: 2rem;   
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    align-items: center;   
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--grisOscuro);
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    /* border: 0.4rem solid var(--colorSecundario); */
+    border-radius: 0.5rem;
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+}
+.opciones_menu a:hover{
+    background-color: var(--colorSecundario);
+}
+.contenido_enlace{
+    text-align: center;
+}
+.contenedor_principal_informacion{
+    width: 99%;    
+    height: 99%;  
+    background-color: var(--grisOscuro);
+    padding: 0.4rem 2rem 1rem 2rem;
+    border-radius: 1rem;
+}
+@media (min-width:768px){
+    .opciones_menu{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 2rem;
+    }
+    .contenedor_principal{
+        width: 99%;    
+        height: 99%;
+        background-color: var(--blanco);
+        padding: 2rem 10rem 4rem 10rem;    
+    }    
+}
+.formulario_socios{
+    background-color: var(--gris);
+    width: 100%;
+    border: 1rem solid var(--gris);
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 2rem;
+    row-gap: 1rem;
+    padding: 0 6rem 0 6rem;
+}
+.input_opciones{
+    display: grid;    
+}
+h1{
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.input_opciones label{    
+    font-size: 2rem;
+    font-weight: 600;    
+}
+
+.input_opciones input{
+    border: none;
+    border-radius: 0.4rem;
+    height: 4rem;    
+    font-size: 2.5rem;
+}
+.input_opciones select{
+    border: none;
+    border-radius: 0.4rem;
+    height: 4rem;    
+    font-size: 2.5rem;
+}
+.formulario_socios .input_opciones:nth-child(2){
+    grid-column: 2/5;
+    grid-row: 1/2;
+}
+.formulario_socios .input_opciones:nth-child(5){
+    grid-column: 3/5;
+    grid-row: 2/3;
+}
+.formulario_socios .input_opciones:nth-child(7){
+    grid-column: 2/5;
+    grid-row: 3/4;
+}
+.formulario_socios .input_opciones:nth-child(8){
+    grid-column: 1/5;
+    grid-row: 4/5;
+}
+.transacciones{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1frs;
+    column-gap: 2rem;
+}
+.botones{
+    margin-top: 0.5rem;
+    background-color: var(--colorSecundario);    
+    height: 3.5rem;
+    border: none;
+    border-radius: 0.8rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--oscuro);
+}
+.botones_agregar{
+    margin-top: 0.5rem;
+    background-color: var(--colorPrincipal);    
+    height: 4rem;
+    border: none;
+    border-radius: 0.8rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--blanco);        
+}
+.botones_agregar:hover{
+    cursor: pointer;
+}
+.botones:hover{
+    cursor: pointer;
+}
+.transacciones {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
+    column-gap: 2rem;
+    row-gap: 1rem;
+    grid-column: 1 / 5; /* Ocupa todo el ancho del form */
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--grisOscuro); /* Separador visual opcional */
+    padding-bottom: 1rem;
+}
+
+/* Haz que el campo "Comprador/Vendedor" siempre sea ancho */
+.transacciones .input_opciones:has(input[name="comprador_vendedor_transaccion"]) {
+    grid-column: 2 / 5; /* Que ocupe desde la col 2 a la 5 */
+}
+.color_hr{
+    color: var(--oscuro);
+}
+
+.archivos_adjuntos{
+    display: flex;
+    font-family: var(--fuentePrincipal);
+}
+.titulo{
+    display: flex;
+    column-gap: 3rem;
+}
+
+.opciones_menu a:focus {
+    outline: none; /* Azul oscuro como tus SVGs */
+    background-color: var(--colorSecundario);
+    
+}
+.opciones_principal{
+    display: flex;
+    column-gap: 2rem;
+}
+.buscador{
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+.buscador label{
+    font-size: 2.5rem;
+    font-weight: bold;    
+}
+.buscador input{
+    height: 3.5rem;
+    font-size: 2rem;
+}
+.buscador button:hover{
+    cursor: pointer;
+}
+.botones_enlaces_add{
+    background-color: var(--colorSecundario);
+    text-decoration: none;
+    padding: 0.8rem;
+    color: var(--oscuro);
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    border: 0.1rem solid var(--grisOscuro);
+}
+.botones_enlaces_add:hover{
+    cursor: pointer;
+}
+.botones_enlaces a{
+    text-decoration: none;
+    font-size: 2.5rem;
+    font-weight: bold;
+    /*background-color: var(--colorSecundario);    */
+    padding: 0.7rem; 
+    color: var(--oscuro); 
+    border-radius: 0.4rem;  
+}
+.tabla_contenido{
+    background-color: var(--blanco);    
+    width: 100%;
+    border-radius: 0.5rem;
+    margin-top: 1rem;    
+}
+.tabla_contenido thead{
+    font-size: 2rem;
+    color: var(--colorPrincipal);    
+    padding-top: 1rem;
+    background-color: var(--grisOscuro);
+    color: var(--blanco);
+    position: sticky;
+    z-index: 10;
+}
+.tabla_contenido tbody{
+    font-size: 1.4rem;    
+}
+.tabla_contenido tbody td{
+    border-bottom: 0.2rem solid var(--oscuro);    
+}
+
+.data_label{
+    background-color: var(--blanco);
+    margin-top: 0.1rem;
+    display: grid;
+    row-gap: 1rem;
+    padding: 1rem 2rem 1rem 2rem;
+}
+
+.texto_negrita{
+    font-weight: bold;
+}
+.informacion_labels{
+    font-family: var(--fuentePrincipal);
+    font-size: 2.5rem;            
+}
+.informacion_labels_select{
+    font-family: var(--fuentePrincipal);
+    font-size: 2.5rem;                
+}
+.informacion_labels_select select{
+    height: 3rem;
+    border-radius: 0.5rem;
+    font-size: 2.1rem;
+}
+.informacion_labels_input{
+    font-family: var(--fuentePrincipal);
+    font-size: 2.5rem;                
+}
+.informacion_labels_input input{
+    height: 3rem;
+    border-radius: 0.5rem;
+    font-size: 2.1rem;    
+}
+.informacion_labels_input input:focus{
+    background-color: var(--colorSecundario);
+}
+.boton_guardar{
+    background: none;    /* Quita el fondo gris */
+    border: none;        /* Quita el borde con relieve */
+    padding: 0;          /* Quita el espacio interno */
+    margin: 0;           /* Quita márgenes externos */
+    font: inherit;       /* Usa la misma letra que el texto de alrededor */
+    color: inherit;      /* Usa el mismo color que el texto de alrededor */
+    cursor: pointer;     /* Mantiene la "manito" al pasar el mouse */
+    outline: inherit;    /* Mantiene la accesibilidad estándar */
+    appearance: none;    /* Quita estilos específicos de sistemas operativos (iOS/Android) */    
+}
+
+.data_cuadros{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 1.5rem;
+    background-color: var(--blanco);
+    column-gap: 2rem;    
+}
+.data_cuadros h2{
+    font-size: 2.5rem;
+}
+
+.tabla_resumen{
+    border-right: 1rem solid var(--grisOscuro);
+}
+.tabla_resumen{
+    font-size: 2.5rem;
+    text-align: center;
+    margin-left: 1rem;
+}
+
+.aling-center{
+    text-align: center;
+}
+.estilo_buscador{
+    display: flex;
+    flex-direction: column;    
+}
+.estilo_buscador label{
+    color: var(--colorPrincipal);
+    font-size: 2rem;
+}
+.informacion_socios{
+    color: var(--oscuro);
+    font-size: 3rem;
+    justify-content: end;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.tabla_pequeña thead{    
+    background-color: var(--colorPrincipal);
+    color: var(--blanco);    
+}
+.tabla_pequeña thead th{
+    text-align: start;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+}
+.tabla_pequeña tbody td{
+    text-align: start;    
+}
+.decoracion_texto{
+    display: list-item;
+    list-style-type: disc;
+}
+.ancho_34rem input{ 
+    width: 34rem;
+}
+.ancho_60rem input{ 
+    width: 100rem;
+}
+.display_flex{
+    display: flex;
+}
