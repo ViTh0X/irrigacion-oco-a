@@ -7,5 +7,7 @@ urlpatterns = [
     path('detalles-socios/<int:pk>',views.ver_detalles_socio,name='ver_detalles_socio'),
     path('editar-socio/<int:pk>',views.editar_socio,name='editar_socio'),
     path('buscar-socio',views.buscar_socio,name='buscar_socio'),
-    path('encontrar-socios',views.encontrar_socios,name='encontrar_socios'),
+    path('encontrar-socios-familiares',views.encontrar_socios_familiares,name='encontrar_socios_familiares'),
+    path('seleccionar-socio-familiar/<int:pk>',views.seleccionar_socio_familiar,name='seleccionar_socio_familiar'),
+    path('seleccionar-no-socio-familiar',views.seleccionar_no_socio_familiar,name='seleccionar_no_socio_familiar'),
 ]

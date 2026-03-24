@@ -1,0 +1,26 @@
+<form hx-post="{% url 'seleccionar_no_socio_familiar' %}" 
+      hx-target="#fragmento_buscar_socio" class="estilo_formularios">
+    {% csrf_token %}
+    <input class="input_anchos" type="hidden" name="id_socio" value="{{ socio_principal.id }}">
+
+    <label>Nombre Socio Principal:</label>
+    <input class="input_anchos" type="text" readonly value="{{ socio_principal.apellidos }}, {{ socio_principal.nombres }}">
+
+    <label>Apellidos Familiar:</label>
+    <input class="input_anchos" type="text" name="apellido_familiar">
+
+    <label>Nombres Familiar:</label>
+    <input class="input_anchos" type="text" name="nombre_familiar">
+
+    <label>Tipo Relación:</label>
+    <select name="tipo_familiar" required>
+        {% for tipo in tipos_familiar %}
+            <option value="{{ tipo.id }}">{{ tipo.denominacion }}</option>
+        {% endfor %}
+    </select>    
+
+    <label>¿Es Socio?</label>
+    <input class="input_pequeños" type="text" name="es_socio_texto" value="No" readonly>
+
+    <button class="boton_pequeño" type="submit" class="boton_formulario">Guardar y Finalizar</button>
+</form>

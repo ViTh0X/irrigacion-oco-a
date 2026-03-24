@@ -41,8 +41,8 @@ class TipoEstadosCivil(models.Model):
 class Socios(models.Model):
     id = models.AutoField(primary_key=True)        
     tipo_socio = models.ForeignKey(TipoSocio,on_delete=models.CASCADE)    
-    nombres = models.CharField(max_length=120)
-    apellidos = models.CharField(max_length=120)
+    nombres = models.CharField(max_length=120,blank=True,null=True)
+    apellidos = models.CharField(max_length=120,blank=True,null=True)
     dni = models.CharField(max_length=12,blank=True,null=True)
     sexo =  models.ForeignKey(TipoSexos,on_delete=models.CASCADE,blank=True,null=True)
     domicilio = models.CharField(max_length=180,blank=True,null=True)
@@ -65,14 +65,26 @@ class Socios(models.Model):
     
     #fin de nuevos
     
-    fecha_modificacion = models.DateTimeField(auto_now=True)
+    fecha_modificacion = models.DateTimeField(auto_now=True,blank=True,null=True)
     
     class Meta:
         db_table = 'socios'
         
     def __str__(self):
-        return self.nombres
+        return f"{self.apellidos} {self.nombres}"
 
+
+class TipoFamiliar(models.Model):
+    id = models.AutoField(primary_key=True)
+    denominacion = models.CharField(max_length=15)
+    fecha_modificacion = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        db_table = 'tipo_familiar'
+
+    def __str__(self):
+        return self.denominacion
+    
 
 class CodigosAsociadosSocio(models.Model):
     id = models.AutoField(primary_key=True)
@@ -86,12 +98,13 @@ class CodigosAsociadosSocio(models.Model):
     def __str__(self):
         return self.codigo
     
-
-
+    
 class PersonasRelacionadasSocio(models.Model):
     id = models.AutoField(primary_key=True)
     socio_asociado = models.ForeignKey(Socios,on_delete=models.CASCADE)
     denominacion = models.CharField(max_length=40)
+    tipo_familiar = models.ForeignKey(TipoFamiliar,on_delete=models.CASCADE,blank=True,null=True)
+    es_socio = models.CharField(max_length=10)    
     fecha_modificacion = models.DateTimeField(auto_now=True)
     
     class Meta:

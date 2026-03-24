@@ -64,7 +64,8 @@
         <div class="data_label">
             <div class="informacion_labels">
                 <label class="texto_negrita" for="">ID:</label>
-                <label for="">{{ socio.id }}</label>
+                <label for="" id="id_socio_unico" >{{ socio.id }}</label>
+                <input type="hidden" id="id_socio_unico_input" name="id_socio" value="{{ socio.id }}">
                 <label class="texto_negrita" for="">Tipo Socio:</label>
                 <label for="">{{ socio.tipo_socio }}</label>
                 <label class="texto_negrita" for="">DNI:</label>
@@ -125,10 +126,14 @@
                 hx-get="{% url 'buscar_socio' %}"
                 hx-target="#fragmento_buscar_socio"
                 >Agregar Familiares</a>                 
-            </div>
-            <div id="fragmento_buscar_socio">
-            </div> 
+            </div>                        
         </div>
+        <div id="fragmento_buscar_socio" class="tabla_resumen items_al_medio">
+            <table class="tabla_pequeña" style="width: 100%;">
+                <tbody id="resultados_socios">
+                    </tbody>
+            </table>
+        </div> 
         <div class="data_cuadros">
             <div class="tabla_resumen">
                 <h2 class="no-margin">Huertos Adquiridos:</h2>
@@ -190,19 +195,20 @@
                 </table>
             </div>
             <div class="tabla_resumen">
-                <h2 class="no-margin">Personas Asociadas:</h2>
+                <h2 class="no-margin">Familiar Relacionado:</h2>
                 <hr class="no-margin">
                 <table class="tabla_pequeña">
-                    <!--<thead>
+                    <thead>
                         <tr>
-                            <th>CodigoSocio</th>
-                            <th>Huerto</th>
+                            <th>ApellidosNombre</th>
+                            <th>Tipo</th>
                         </tr>
-                    </thead>-->
+                    </thead>
                     <tbody>
                         {% for personas in personas_asociadas %}
                         <tr>                            
-                            <td class="decoracion_texto">{{ personas }}</td>
+                            <td >{{ personas }}</td>
+                            <td >{{ personas.tipo_familiar }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>

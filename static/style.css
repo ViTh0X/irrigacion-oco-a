@@ -316,7 +316,7 @@ h1{
 
 .data_cuadros{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
     margin-top: 1.5rem;
     background-color: var(--blanco);
     column-gap: 2rem;    
@@ -377,4 +377,63 @@ h1{
 }
 .display_flex{
     display: flex;
+}
+.campos_textosimple{
+    display: flex;
+    justify-content: center;
+}
+.campos_textosimple input{
+    width: 40rem;
+    height: 4rem;
+    font-size: 2.6rem;
+}
+.campos_textosimple button{
+    font-size: 2.6rem;
+    background-color: var(--colorSecundario);
+    border: none;
+}
+.items_al_medio{
+    display: flex;
+    justify-content: center;
+}
+.backgroud_blanco{
+    margin-top: 0.5rem;
+    background-color: var(--blanco);
+}
+.backgroud_blanco:hover{
+    cursor: pointer;
+}
+.estilo_formularios{
+    margin-top: 1rem;
+}
+.estilo_formularios label{
+    font-size: 2.5rem;
+}
+.estilo_formularios .input_anchos{
+    width: 45rem;
+    height: 3rem;
+    font-size: 2.5rem;
+}
+.estilo_formularios .input_pequeños{
+    width: 5rem;
+    height: 3rem;
+    font-size: 2.5rem;
+}
+.estilo_formularios select{
+    height: 4rem;
+    font-size: 2.5rem;
+    border-radius: 0.4rem;
+}
+.boton_pequeño{
+    width: 20rem;    
+    height: 4rem;
+    background-color: var(--colorSecundario);
+    border: none;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    color: var(--blanco);
+}
+.boton_pequeño:hover{
+    cursor: pointer;
 }

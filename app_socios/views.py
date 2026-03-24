@@ -1,8 +1,9 @@
-from django.shortcuts import redirect, render
-
+from django.shortcuts import redirect, render 
+from django.http import Http404, HttpResponse
+from django.shortcuts import render, redirect
 from app_bienes_inmueble.models import Inmuebles
 from .models import *
-
+from django.urls import reverse
 from .forms import *
 
 from django.db.models import Q
@@ -62,11 +63,104 @@ def editar_socio(request,pk):
 def buscar_socio(request):
     return render(request,'app_socios/buscar_socio.html')
 
-def encontrar_socios(request):
-    pista_socio = request.GET.get('socio')
+def encontrar_socios_familiares(request):
+    pista_socio = request.GET.get('nombre', '').strip()    
     palabras = pista_socio.split()
+
+    # SI NO HAY PALABRAS, DEVOLVEMOS LISTA VACÍA PARA QUE SALTE EL {% empty %}
+    if not palabras:
+        return render(request, 'app_socios/socios_encontrados.html', {'socios': []})
+
     query = Q()
     for palabra in palabras:
         query &= (Q(nombres__icontains=palabra) | Q(apellidos__icontains=palabra))
+    
     socios = Socios.objects.filter(query)
-    return render(request,'app_socios/socios_encontrados.html',{'socios':socios})  
+    print(socios.__len__())
+    # OPCIONAL: Imprime en consola para depurar
+    # print(f"Buscando: {palabras} - Encontrados: {socios.count()}")
+    return render(request, 'app_socios/socios_encontrados.html', {'socios': socios})
+
+def seleccionar_no_socio_familiar(request):
+    id_socio = request.POST.get('id_socio') or request.GET.get('id_socio')
+    if not id_socio:
+        return HttpResponse("Error: No se encontró el ID del socio principal.")
+    socio_principal = Socios.objects.get(pk=int(id_socio))
+    tipos_familiar = TipoFamiliar.objects.all()
+    if request.method == 'POST':
+        tipo_id = request.POST.get('tipo_familiar')
+        apellido_familiar = request.POST.get('apellido_familiar')
+        nombre_familiar = request.POST.get('nombre_familiar')
+        es_socio_txt = request.POST.get('es_socio_texto')        
+        try:
+            tipo_f = TipoFamiliar.objects.get(pk=int(tipo_id))
+            
+            # Guardamos la relación
+            PersonasRelacionadasSocio.objects.create(
+                socio_asociado=socio_principal,
+                denominacion=f"{apellido_familiar}, {nombre_familiar}",
+                tipo_familiar=tipo_f,
+                es_socio=es_socio_txt
+            )
+            
+            # MAGIA PARA HTMX: 
+            # Esto le dice al navegador que haga un refresh total a la página de detalles
+            response = HttpResponse()
+            response['HX-Redirect'] = reverse('ver_detalles_socio', kwargs={'pk': socio_principal.id})
+            return response
+            
+        except Exception as e:
+            import traceback
+            print(traceback.format_exc()) # Esto imprimirá el error exacto en la consola
+            return HttpResponse(f"Error interno: {e}", status=500)            
+
+    # Si es GET, mostramos el formulario
+    return render(request, 'app_socios/form_agregar_no_familiar.html', {
+        'tipos_familiar': tipos_familiar,        
+        'socio_principal': socio_principal
+    })
+    
+def seleccionar_socio_familiar(request,pk):
+    familiar_socio = Socios.objects.get(pk=pk)
+    
+    # Buscamos el ID en POST (que ahora enviamos como id_socio) o en GET
+    id_socio = request.POST.get('id_socio') or request.GET.get('id_socio')
+    
+    if not id_socio:
+        return HttpResponse("Error: No se encontró el ID del socio principal.")
+
+    socio_principal = Socios.objects.get(pk=int(id_socio))
+    tipos_familiar = TipoFamiliar.objects.all()
+    
+    if request.method == 'POST':
+        tipo_id = request.POST.get('tipo_familiar')
+        es_socio_txt = request.POST.get('es_socio_texto')
+        
+        try:
+            tipo_f = TipoFamiliar.objects.get(pk=int(tipo_id))
+            
+            # Guardamos la relación
+            PersonasRelacionadasSocio.objects.create(
+                socio_asociado=socio_principal,
+                denominacion=f"{familiar_socio.apellidos}, {familiar_socio.nombres}",
+                tipo_familiar=tipo_f,
+                es_socio=es_socio_txt
+            )
+            
+            # MAGIA PARA HTMX: 
+            # Esto le dice al navegador que haga un refresh total a la página de detalles
+            response = HttpResponse()
+            response['HX-Redirect'] = reverse('ver_detalles_socio', kwargs={'pk': socio_principal.id})
+            return response
+            
+        except Exception as e:
+            import traceback
+            print(traceback.format_exc()) # Esto imprimirá el error exacto en la consola
+            return HttpResponse(f"Error interno: {e}", status=500)            
+
+    # Si es GET, mostramos el formulario
+    return render(request, 'app_socios/form_agregar_familiar.html', {
+        'tipos_familiar': tipos_familiar,
+        'familiar_socio': familiar_socio,
+        'socio_principal': socio_principal
+    })
