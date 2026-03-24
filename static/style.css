@@ -1,6 +1,7 @@
 :root{
     --colorPrincipal:#02264d;
     --colorSecundario:#44C730;
+    --verdeOscuro:#22caa0;
     --blanco: #fff;
     --oscuro: #000;
     --gris: #D8DAD9;
@@ -266,6 +267,11 @@ h1{
     border-bottom: 0.2rem solid var(--oscuro);    
 }
 
+.tabla_pequeña tbody td{
+    border-bottom: 0.2rem solid var(--oscuro);    
+}
+
+
 .data_label{
     background-color: var(--blanco);
     margin-top: 0.1rem;
@@ -316,7 +322,7 @@ h1{
 
 .data_cuadros{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 2fr;
+    grid-template-columns: 1fr 1fr 2fr 1fr;
     margin-top: 1.5rem;
     background-color: var(--blanco);
     column-gap: 2rem;    
@@ -436,4 +442,15 @@ h1{
 }
 .boton_pequeño:hover{
     cursor: pointer;
+}
+.mostrar_info_estilo{
+    display: inline;
+}
+.mostrar_info_estilo label:nth-child(1){
+    display: inline;
+    background-color: var(--colorSecundario);
+    padding: 0.4rem 0.4rem 0.4rem 0.4rem;
+    background-color: var(--verdeOscuro);
+    color: var(--blanco);
+    border-radius: 1rem;
 }

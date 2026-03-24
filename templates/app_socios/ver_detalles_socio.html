@@ -63,65 +63,109 @@
     <div>
         <div class="data_label">
             <div class="informacion_labels">
-                <label class="texto_negrita" for="">ID:</label>
-                <label for="" id="id_socio_unico" >{{ socio.id }}</label>
-                <input type="hidden" id="id_socio_unico_input" name="id_socio" value="{{ socio.id }}">
-                <label class="texto_negrita" for="">Tipo Socio:</label>
-                <label for="">{{ socio.tipo_socio }}</label>
-                <label class="texto_negrita" for="">DNI:</label>
-                <label for="">{{ socio.dni|default:"No ingresado" }}</label>
-                <label class="texto_negrita" for="">Sexo:</label>
-                <label for="">{{ socio.sexo|default:"No Ingresado" }}</label>
-                <label class="texto_negrita" for="">Estado Civil:</label>
-                <label for="">{{ socio.estado_civil|default:"No Ingresado" }}</label> 
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">ID:</label>
+                    <label for="" id="id_socio_unico" >{{ socio.id }}</label>
+                    <input type="hidden" id="id_socio_unico_input" name="id_socio" value="{{ socio.id }}">
+                </div>
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Tipo Socio:</label>
+                    <label for="">{{ socio.tipo_socio }}</label>
+                </div>
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">DNI:</label>
+                    <label for="">{{ socio.dni|default:"No ingresado" }}</label>
+                </div>                                                
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Sexo:</label>
+                    <label for="">{{ socio.sexo|default:"No Ingresado" }}</label>
+                </div>                
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Estado Civil:</label>
+                    <label for="">{{ socio.estado_civil|default:"No Ingresado" }}</label> 
+                </div>                
             </div>        
-            <div class="informacion_labels">
-                <label class="texto_negrita" for="">Nombre Completo:</label>
-                <label for="">{{ socio.apellidos }}, {{ socio.nombres }}</label>
-                <label class="texto_negrita" for="">☎:</label>
-                <label for="">{{ socio.numero_contacto|default:"No Ingresado" }}</label>  
+            <div class="informacion_labels mostrar_info_estilo">
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Apellidos Nombres:</label>
+                    <label for="">{{ socio.apellidos }}</label>
+                </div>
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Apellidos Nombres:</label>
+                    <label for="">{{ socio.nombres }}</label>
+                </div>
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">☎:</label>
+                    <label for="">{{ socio.numero_contacto|default:"No Ingresado" }}</label>  
+                </div>                
             </div>                  
-            <div class="informacion_labels">
-                <label class="texto_negrita" for="">Domicilio:</label>
-                <label for="">{{ socio.domicilio|default:"No registra" }}</label>                
+            <div class="informacion_labels mostrar_info_estilo">
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Domicilio:</label>
+                    <label for="">{{ socio.domicilio|default:"No registra" }}</label>                
+                </div>                
             </div>            
-            <div class="informacion_labels">
-                <label class="texto_negrita" for="">Fecha Nacimiento:</label>
-                <label for="">{{ socio.fecha_nacimiento|default:"No Ingresado" }}</label>
-                <label class="texto_negrita" for="">Lugar Nacimiento:</label>
-                <label for="">{{ socio.lugar_nacimiento|default:"No Ingresado" }}</label>                  
+            <div class="informacion_labels mostrar_info_estilo">
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Fecha Nacimiento:</label>
+                    <label for="">{{ socio.fecha_nacimiento|default:"No Ingresado" }}</label>
+                </div>
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Lugar Nacimiento:</label>
+                    <label for="">{{ socio.lugar_nacimiento|default:"No Ingresado" }}</label>                  
+                </div>                                
             </div>      
             <div class="informacion_labels">
-                <label class="texto_negrita" for="">Distrito:</label>
-                <label for="">{{ socio.distrito|default:"No Ingresado" }}</label> 
-                <label class="texto_negrita" for="">Provincia:</label>
-                <label for="">{{ socio.provincia|default:"No Ingresado" }}</label>
-                <label class="texto_negrita" for="">Departamento:</label>
-                <label for="">{{ socio.departamento|default:"No Ingresado" }}</label>                 
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Distrito:</label>
+                    <label for="">{{ socio.distrito|default:"No Ingresado" }}</label>
+                </div>
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Provincia:</label>
+                    <label for="">{{ socio.provincia|default:"No Ingresado" }}</label>
+                </div>
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Departamento:</label>
+                    <label for="">{{ socio.departamento|default:"No Ingresado" }}</label>                 
+                </div>                                                 
             </div>  
-            <div class="informacion_labels">
-                <label class="texto_negrita" for="">Nacionalidad:</label>
-                <label for="">{{ socio.nacionalidad|default:"No Ingresado" }}</label>                
+            <div class="informacion_labels mostrar_info_estilo">
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Nacionalidad:</label>
+                    <label for="">{{ socio.nacionalidad|default:"No Ingresado" }}</label>                
+                </div>                
             </div>      
-            <div class="informacion_labels">
-                <label class="texto_negrita" for="">Profesion/Ocupacion:</label>
-                <label for="">{{ socio.profesion|default:"No Ingresado" }}</label>
-                <label class="texto_negrita" for="">Grado de Instruccion:</label>
-                <label for="">{{ socio.grado_instruccion|default:"No Ingresado" }}</label>                 
+            <div class="informacion_labels mostrar_info_estilo">
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Profesion/Ocupacion:</label>
+                    <label for="">{{ socio.profesion|default:"No Ingresado" }}</label>
+                </div>                
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Grado de Instruccion:</label>
+                    <label for="">{{ socio.grado_instruccion|default:"No Ingresado" }}</label>                 
+                </div>                
             </div>   
-            <div class="informacion_labels">
-                <label class="texto_negrita" for="">Centro Trabajo:</label>
-                <label for="">{{ socio.centro_trabajo|default:"No Ingresado" }}</label>                
+            <div class="informacion_labels mostrar_info_estilo">
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Centro Trabajo:</label>
+                    <label for="">{{ socio.centro_trabajo|default:"No Ingresado" }}</label>                
+                </div>                                
             </div> 
-            <div class="informacion_labels">
-                <label class="texto_negrita" for="">Correo:</label>
-                <label for="">{{ socio.correo|default:"No Ingresado" }}</label>                
+            <div class="informacion_labels mostrar_info_estilo">
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Correo:</label>
+                    <label for="">{{ socio.correo|default:"No Ingresado" }}</label>     
+                </div>                               
             </div> 
-            <div class="informacion_labels">
-                <label class="texto_negrita" for="">Numero Contacto Adicional:</label>
-                <label for="">{{ socio.numero_contacto_adicional|default:"No Ingresado" }}</label>
-                <label class="texto_negrita" for="">Fecha Ingreso:</label>
-                <label for="">{{ socio.fecha_ingreso|default:"No Ingresado" }}</label>
+            <div class="informacion_labels mostrar_info_estilo">
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Numero Contacto Adicional:</label>
+                    <label for="">{{ socio.numero_contacto_adicional|default:"No Ingresado" }}</label>
+                </div>
+                <div class="mostrar_info_estilo">
+                    <label class="texto_negrita" for="">Fecha Ingreso:</label>
+                    <label for="">{{ socio.fecha_ingreso|default:"No Ingresado" }}</label>
+                </div>                                
                 <a class="botones_enlaces_add"
                 hx-get="{% url 'buscar_socio' %}"
                 hx-target="#fragmento_buscar_socio"
@@ -176,6 +220,28 @@
                 </table>
             </div>
             <div class="tabla_resumen">
+                <h2 class="no-margin">Familiares Relacionado:</h2>
+                <hr class="no-margin">
+                <table class="tabla_pequeña">
+                    <thead>
+                        <tr>
+                            <th>ApellidosNombre</th>
+                            <th>Tipo</th>
+                            <th>¿Socio?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for personas in personas_asociadas %}
+                        <tr>                            
+                            <td>-{{ personas }}</td>
+                            <td>{{ personas.tipo_familiar }}</td>
+                            <td>{{ personas.es_socio }}</td>                            
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="tabla_resumen">
                 <h2 class="no-margin">Historial Codigos Socio:</h2>
                 <hr class="no-margin">
                 <table class="tabla_pequeña">
@@ -193,29 +259,7 @@
                         {% endfor %}
                     </tbody>
                 </table>
-            </div>
-            <div class="tabla_resumen">
-                <h2 class="no-margin">Familiares Relacionado:</h2>
-                <hr class="no-margin">
-                <table class="tabla_pequeña">
-                    <thead>
-                        <tr>
-                            <th>ApellidosNombre</th>
-                            <th>Tipo</th>
-                            <th>¿Socio?</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for personas in personas_asociadas %}
-                        <tr>                            
-                            <td>{{ personas }}</td>
-                            <td>{{ personas.tipo_familiar }}</td>
-                            <td>{{ personas.es_socio }}</td>                            
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+            </div>            
         </div>
     </div>
     </div> 
